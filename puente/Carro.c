@@ -66,7 +66,6 @@ void* moverCarro(struct Car* c){
     }
     else{
         inicio = c->puente->tamPuente - 1; //inicia de derecha a izquierda
-        
         or = -1;
         pos = inicio;
     }

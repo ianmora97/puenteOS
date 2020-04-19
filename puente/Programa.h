@@ -22,7 +22,7 @@
 #define ANSI_COLOR_RESET   "\x1b[0m"
 
 /*--VARIABLES DEL PROGRAMA--*/
-int cantidadCarros;
+int cantidadCarros; //cantidad de carros que llegan al puente
 struct Puente *puente; //puente
 struct Cola *colaG; //cola para visualizar los carros que llegan
 struct Cola *colaL; //carros del lado izquierdo
@@ -38,10 +38,12 @@ bool trafico; //true = izquierda, false = derecha - como pasan los carros
 int distCarNuevosL; //media de distribucion de carros del lado izquierdo
 int distCarNuevosR; //media de distribucion de carrtos del lado derecho
 int velocidades[4]; //0 velMaxIzq, 1 velMaxDer, 2 velMinIzq, 3 velMinDer
-int cantL,cantR;
+int cantL,cantR; //cantidad de carros a los lados, contador para mostrar la tabla
 bool direccion; //para el semaforo
+int promedioAmbL; //promedio de aparicion de las ambulancias izquierda
+int promedioAmbR; //promedio de aparicion de las ambulancias derecha
 
-void crearPrograma(int ta, int lucesD, int lucesI, int dl, int dr, int vMi, int vMd, int vmi, int vmd);
+void crearPrograma(int ta, int lucesD, int lucesI, int dl, int dr, int vMi, int vMd, int vmi, int vmd,int pal,int par);
 void run(int opc); //1 el primero en llegar, 2 semaforos, 3 oficial
 void *llegadaCarros(void *lado);
 void tiempoEspera(bool l);
@@ -50,6 +52,7 @@ int definirVelMax(bool lado);
 int definirVelMin(bool lado);
 void trafic();
 void semaforo();
-void printCuadro();
+void primeroQueLlega();
+void printCuadro(int o);
 void *hiloEspera();
 #endif

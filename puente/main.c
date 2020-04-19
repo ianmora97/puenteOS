@@ -1,46 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <string.h>
 #include <ncurses.h>
 #include "Carro.h"
 #include "Cola.h"
 #include "Programa.h"
 
-/*
-WINDOW *win;
-void InitVideo(){
-       win = initscr(); // Crea la ventana 
-       clear();  // Borra la pantalla entera bajo ncurses 
-       refresh(); // Actualiza la ventana con los cambios 
-       noecho();
-       cbreak();
-       keypad(win, TRUE);
-}
-void Exit(){
-       refresh();
-       endwin();
-       exit(1);
-}
-*/
-int main(){
-    //InitVideo();
-
-    /*struct Cola *cola = crearCola(5);
-    struct Puente *p = crearPuente(5);
-
-    struct Car *car = crearCar(1, false, true, 25, true,p);
-    enqueue(cola, car);
-    struct Car *car2 = crearCar(2,true, false, 45, true,p);
-    enqueue(cola, car2);
-    struct Car *car3 = crearCar(3,false, true, 35, false,p);
-    enqueue(cola, car3);
-    imprimirCola(cola);
-    dequeue(cola);
-    imprimirCola(cola);*/
+int main() {
+    FILE* fichero;
+    fichero = fopen("fichero", "r");
+    if (fichero == NULL) {
+        fputs("Archivo no encontrado!", stderr);
+        exit(1);
+    }
+    int tamPuente, lucesTD,lucesTI,generarI, generarD;
+    int velMaxI, velMaxD, velMinI,velMinD,genAmbI,genAmbD;
+    fscanf(fichero, "%d %d %d %d %d %d %d %d %d %d %d" , &tamPuente, &lucesTD, &lucesTI, &generarI, &generarD, &velMaxI, &velMaxD, &velMinI, &velMinD, &genAmbI, &genAmbD);
+    printf(" Tamanio del puente:%i\n Duracion de luces Semaforo: Der: %i Izq: %i\n Generacion de carros: Der: %i Izq: %i\n Velocidad Max: Izq: %i Der: %i\n Velocidad Min: Izq: %i Der: %i\n Generacion Ambulancias: Izq: %i Der: %i\n",tamPuente,lucesTD,lucesTI,generarI,generarD,velMaxI,velMaxD,velMinI,velMinD,genAmbI,genAmbD);
     
-    crearPrograma(6,10,10,500,600,10,10,20,20);
-    run(2);
+    crearPrograma(tamPuente, lucesTD, lucesTI, generarI, generarD, velMaxI, velMaxD, velMinI, velMinD,genAmbI,genAmbD);
+    int opcion;
+    printf("Digite una opcion de simulacion[1=El primero que llega pasa, 2=Semaforo, 3=Transito]> ");
+    scanf("%d",&opcion);
+    fclose(fichero);
+    system("clear");
+    run(opcion);
     
 
     return 0;
