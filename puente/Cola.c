@@ -123,25 +123,12 @@ void* imprimirColaPrint(void *cola){
     struct Cola *c = (struct Cola*) cola;
     struct Nodo *actual = c->head;
     struct Car *car; 
+/*
     while (actual != NULL){
-        gotoxy(50,5);
-        printf("[");
-        printf(" %i ,", actual->carro->placa );
-        if(actual->carro->orientacion == true){
-            printf("Izq, ");
-        }
-        else{
-            printf("Der, ");
-        }
-        if(actual->carro->tipo == false){
-            printf("Ambul");
-        }
-        else{
-            printf("Carro");
-        }
-        printf("]\n");
+        gotoxy(,); printf("(%i, %s, %s, %i)", car->placa, car->orientacion ? "Izq" : "Der", car->tipo ? "\x1b[33mCar\x1b[0m" : "\x1b[31mAmb\x1b[0m", car->velocidad);
         actual = actual->sig;
     }
+*/
     printf("\n");
 }
 struct Car* peek(struct Cola *c){

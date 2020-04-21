@@ -28,7 +28,7 @@ struct Cola *colaG; //cola para visualizar los carros que llegan
 struct Cola *colaL; //carros del lado izquierdo
 struct Cola *colaR; //carros del lado derecho
 struct Cola *carrosTerminados; //carros que pasaron del lado izquierdo al derecho y al reves
-struct Cola *ambulancias; //cuando aparezcan ambulancias guardarlas en un lugar
+struct Cola *ambulancias; //cuando aparezcan ambulancias guardarlas en un lugar *no funciona*
 pthread_mutex_t contCarros; //cuenta los carros dentro del puente
 pthread_mutex_t mutexColaL; //MUTEX para asegurar la cola Iquierda
 pthread_mutex_t mutexColaR; //MUTEX para asegurar la cola Derecha
@@ -42,8 +42,11 @@ int cantL,cantR; //cantidad de carros a los lados, contador para mostrar la tabl
 bool direccion; //para el semaforo
 int promedioAmbL; //promedio de aparicion de las ambulancias izquierda
 int promedioAmbR; //promedio de aparicion de las ambulancias derecha
+bool pl,pr; //barreras para que no pasen los carros
+int contTrafico; //para contar cuantos carros pasan
+int k1, k2; //contador de cada lado
 
-void crearPrograma(int ta, int lucesD, int lucesI, int dl, int dr, int vMi, int vMd, int vmi, int vmd,int pal,int par);
+void crearPrograma(int ta, int lucesD, int lucesI, int dl, int dr, int vMi, int vMd, int vmi, int vmd,int pal,int par, int kl, int kr);
 void run(int opc); //1 el primero en llegar, 2 semaforos, 3 oficial
 void *llegadaCarros(void *lado);
 void tiempoEspera(bool l);
@@ -55,4 +58,5 @@ void semaforo();
 void primeroQueLlega();
 void printCuadro(int o);
 void *hiloEspera();
+void *oficialM();
 #endif

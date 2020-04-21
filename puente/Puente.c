@@ -12,8 +12,9 @@ struct Puente* crearPuente(int t){
     pthread_mutex_init(&puente->contador, NULL);
     puente->posicion = malloc(t * sizeof(pthread_mutex_t));
 	for(int i = 0; i < t; i++){
-		pthread_mutex_init(&(puente->posicion[i]), NULL); 
+		pthread_mutex_init(&puente->posicion[i], NULL); 
 	}
     puente->ambulancia = false;
+    puente->direccion = false;
     return puente;
 }

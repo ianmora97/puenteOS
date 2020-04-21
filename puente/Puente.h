@@ -13,6 +13,7 @@ struct Puente{
     pthread_mutex_t *posicion; //para evitar los deadlocks
     pthread_mutex_t contador;
     bool ambulancia;
+    bool direccion;
 };
 struct Puente* crearPuente(int t);
 
